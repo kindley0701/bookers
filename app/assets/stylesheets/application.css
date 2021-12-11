@@ -33,8 +33,7 @@ h3{
 }
 
 .table{
-  display:flex;
-  flex-wrap: wrap;
+  width:100%;
 }
 
 .record{
@@ -53,10 +52,12 @@ h3{
 
 .title{
   width:25%;
+  overflow-wrap: break-word;
 }
 
 .body{
   width:50%;
+  overflow-wrap: break-word;
 }
 
 .SED{
@@ -96,6 +97,11 @@ h3{
 
 .label{
   font-size: 13px;
+}
+
+.notice{
+  margin-left: 20px;
+  color:green;
 }
 
 .text-box{

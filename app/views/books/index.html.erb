@@ -1,26 +1,32 @@
 <h1>Books</h1>
-<div class="table">
-  <div class="record">
-        <h4 class="title">Title</h4>
-        <h4 class="body">Body</h4>
-        <div class="SED"></div>
-  </div>
-  <% @books.each do |book| %>
-  <div class="data">
-      <span class="title"><%= book.title %></span>
-      <span class="body"><%= book.body %></span>
-      <div class="SED">
-          <p class="SED-links"><%= link_to "Show", book_path(book) %></p>
-          <p class="SED-links"><%= link_to "Edit", edit_book_path(book) %></p>
-          <p class="SED-links"><%= link_to "Destroy", book_path(book), method: :delete, "data-confirm" => "Are you sure？" %></p>
-      </div>
-  </div>
-  <% end %>
-</div>
 
-<%= form_with model:@book, url:'/books', local:true do |f| %>
- <h3>New Book</h3>
- <% if @book.errors.any? %>
+<table class="table">
+  <thead>
+    <tr class="record">
+      <th class="title">Title</th>
+      <th class="body">Body</th>
+      <th class="SED"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @books.each do |book| %>
+    <tr class="data">
+      <td class="title"><%= book.title %></td>
+      <td class="body"><%= book.body %></td>
+      <td class="SED">
+        <p class="SED-links"><%= link_to "Show", book_path(book) %></p>
+        <p class="SED-links"><%= link_to "Edit", edit_book_path(book) %></p>
+        <p class="SED-links"><%= link_to "Destroy", book_path(book), method: :delete, "data-confirm" => "Are you sure？" %></p>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>New Book</h3>
+
+ 
+<% if @book.errors.any? %>
   <div class="error-message">
       <p class="error-amount"><%= @book.errors.count %> error prohibited this book from being saved:</p>
       <ul class="list">
@@ -29,7 +35,9 @@
             <% end %>
       </ul>
   </div>
- <% end %>
+<% end %> 
+ 
+<%= form_with model:@book, method: :post, local:true do |f| %>
  <p class="label">Title</p>
  <%= f.text_field :title %>
  <p class="label">Body</p>
